@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProjectForge AI | Cinematic Blueprint Synthesizer</title>
+  <link rel="stylesheet" href="src/index.css">
+  
+  <!-- CDNs for WebGL Rendering & Styling Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Ambient Glow Background Canvas -->
+  <canvas id="particle-canvas"></canvas>
+  
+  <div class="ambient-glows">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+  </div>
+
+  <!-- Luxury Navigation Bar -->
+  <header id="main-header">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <i data-lucide="shield-alert" style="color: var(--color-petal-frost);"></i>
+        PROJECTFORGE<span>AI</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features-anchor">Core</a></li>
+        <li><a href="#forge-anchor">Forge Deck</a></li>
+        <li><a href="#dashboard-anchor" id="nav-dashboard-link" style="display: none;">Blueprint</a></li>
+      </ul>
+      <div class="header-actions">
+        <button class="theme-btn" id="theme-toggle" aria-label="Toggle Theme">
+          <i data-lucide="sun" class="sun-icon" style="display: none;"></i>
+          <i data-lucide="moon" class="moon-icon"></i>
+        </button>
+        <a href="#forge-anchor" class="btn btn-secondary" style="padding: 0.7rem 1.5rem; font-size: 0.85rem;" id="nav-cta">Forge Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Landing Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span></span> Neural Core 2.0 Live
+      </div>
+      <h1 class="gradient-text">Forge Your Vision Into Architecture</h1>
+      <p class="hero-subtitle">
+        An ultra-premium, cinematic AI synthesizer that structures project parameters, tech stack layers, folder systems, development roadmaps, and interactive WebGL network blueprints.
+      </p>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="#forge-anchor" class="btn btn-primary" id="hero-cta-btn">
+          Start Synthesizer
+          <i data-lucide="arrow-right"></i>
+        </a>
+        <a href="#features-anchor" class="btn btn-secondary">Explore Mechanics</a>
+      </div>
+    </div>
+    
+    <!-- Floating 3D Geometric Object Canvas -->
+    <div class="hero-3d-container" id="hero-3d-canvas-container">
+      <canvas id="hero-canvas"></canvas>
+    </div>
+  </section>
+
+  <!-- Input Experience Deck -->
+  <div class="forge-container" id="forge-anchor">
+    <div class="section-header reveal-element">
+      <h2 class="gradient-text">Configure Forge Core</h2>
+      <p>Specify the parameters of your digital vision to trigger systemic code mapping.</p>
+    </div>
+    
+    <div class="glass-card reveal-element">
+      <form id="forge-form" onsubmit="return false;">
+        <div class="input-grid">
+          
+          <!-- Project Idea Text Box -->
+          <div class="input-group input-full-width">
+            <label for="project-idea">
+              <i data-lucide="sparkles"></i>
+              What is your vision?
+            </label>
+            <textarea id="project-idea" class="premium-textarea" placeholder="E.g., A real-time collaborative workspace mapping team milestones using canvas nodes, or a luxury SaaS subscription router..." required></textarea>
+          </div>
+
+          <!-- Project Domain Select Deck -->
+          <div class="input-group input-full-width">
+            <label>
+              <i data-lucide="layout-grid"></i>
+              Select Domain Area
+            </label>
+            <div class="domain-cards">
+              <div class="select-card active" data-domain="saas">
+                <i data-lucide="layers"></i>
+                <span>SaaS App</span>
+              </div>
+              <div class="select-card" data-domain="mobile">
+                <i data-lucide="smartphone"></i>
+                <span>Mobile App</span>
+              </div>
+              <div class="select-card" data-domain="web3">
+                <i data-lucide="cpu"></i>
+                <span>Web3 / dApp</span>
+              </div>
+              <div class="select-card" data-domain="ai">
+                <i data-lucide="database"></i>
+                <span>AI Pipeline</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience Level Premium Slider -->
+          <div class="input-group">
+            <label for="experience-range">
+              <i data-lucide="graduation-cap"></i>
+              Experience Level Target
+            </label>
+            <div class="experience-slider-container">
+              <input type="range" id="experience-range" min="1" max="3" value="2" class="premium-range">
+              <div class="exp-labels">
+                <span data-val="1">Novice</span>
+                <span data-val="2" class="active">Professional</span>
+                <span data-val="3">Enterprise</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Custom Options -->
+          <div class="input-group">
+            <label>
+              <i data-lucide="clock"></i>
+              Timeline Estimate
+            </label>
+            <div class="timeline-options">
+              <button type="button" class="timeline-btn" data-val="2w">2 Weeks</button>
+              <button type="button" class="timeline-btn active" data-val="1m">1 Month</button>
+              <button type="button" class="timeline-btn" data-val="3m">3 Months</button>
+              <button type="button" class="timeline-btn" data-val="6m">6 Months+</button>
+            </div>
+          </div>
+
+          <!-- Tech Stack Multi-Select Tags -->
+          <div class="input-group input-full-width">
+            <label style="margin-bottom: 0.2rem;">
+              <i data-lucide="code-2"></i>
+              Select Core Technology Stack Layers
+            </label>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Select all elements to synthesize in your blueprint model.</p>
+            <div class="tech-selector">
+              <div class="tech-tag active" data-tech="React">React</div>
+              <div class="tech-tag active" data-tech="Next.js">Next.js</div>
+              <div class="tech-tag active" data-tech="Node.js">Node.js</div>
+              <div class="tech-tag" data-tech="Python">Python</div>
+              <div class="tech-tag active" data-tech="PostgreSQL">PostgreSQL</div>
+              <div class="tech-tag" data-tech="Redis">Redis</div>
+              <div class="tech-tag active" data-tech="TailwindCSS">Tailwind CSS</div>
+              <div class="tech-tag" data-tech="Three.js">Three.js</div>
+              <div class="tech-tag" data-tech="Solidity">Solidity</div>
+              <div class="tech-tag" data-tech="WebGL">WebGL</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Forge Action Button -->
+        <div class="forge-action-container">
+          <button type="button" class="btn btn-primary forge-btn-large" id="forge-trigger">
+            Forge Blueprint
+            <i data-lucide="wand-2"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Cinematic Loading Overlay -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loader-element">
+      <div class="loader-circle"></div>
+      <div class="loader-circle-inner"></div>
+      <div class="loader-core"></div>
+    </div>
+    <div class="loading-terminal" id="terminal-console">
+      <!-- Loading sequences populated dynamically -->
+    </div>
+  </div>
+
+  <!-- Results Dashboard -->
+  <section class="dashboard-container" id="dashboard-anchor">
+    <div class="section-header">
+      <div class="hero-badge" style="margin-bottom: 1rem;">
+        Model Synthesis Ready
+      </div>
+      <h2 class="gradient-text" id="result-project-name">Project Blueprint</h2>
+      <p id="result-project-overview">Your interactive architecture layers mapped below.</p>
+    </div>
+
+    <div class="dashboard-grid">
+      
+      <!-- Card: Project Metadata Overview -->
+      <div class="glass-card dashboard-card">
+        <div class="dashboard-card-header">
+          <h3><i data-lucide="info"></i>Overview</h3>
+          <span class="result-tech-badge" id="result-complexity" style="border-color: var(--color-petal-frost); color: var(--color-petal-frost);">Advanced</span>
+        </div>
+        <div class="project-stats">
+          <div class="stat-item">
+            <span class="stat-val" id="stat-hours">240h</span>
+            <span class="stat-lbl">Development Hours</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val" id="stat-complexity">High</span>
+            <span class="stat-lbl">Architecture Size</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val" id="stat-tech-count">6 Layers</span>
+            <span class="stat-lbl">Stack Count</span>
+          </div>
+        </div>
+        <p class="project-summary" id="result-summary">
+          A blueprint generated for the domain SaaS. Click items below to explore codebases.
+        </p>
+        <div class="result-tech-list" id="result-tech-badges">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Card: Key Features -->
+      <div class="glass-card dashboard-card">
+        <div class="dashboard-card-header">
+          <h3><i data-lucide="star"></i>Synthesized Features</h3>
+        </div>
+        <div class="features-list" id="result-features">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Card: Interactive Folder Structure Tree-View -->
+      <div class="glass-card dashboard-card">
+        <div class="dashboard-card-header">
+          <h3><i data-lucide="folder-git-2"></i>Workspace Folder Tree</h3>
+        </div>
+        <div class="folder-tree-container" id="result-folder-tree">
+          <!-- Rendered recursively -->
+        </div>
+      </div>
+
+      <!-- Card: UI Mood Board & Suggestions -->
+      <div class="glass-card dashboard-card">
+        <div class="dashboard-card-header">
+          <h3><i data-lucide="palette"></i>UI Aesthetics & Moodboard</h3>
+        </div>
+        <p class="architecture-text">A cohesive look-and-feel palette tailored to represent this brand's premium value immediately.</p>
+        <div class="ui-palette" id="result-ui-palette">
+          <!-- Palettes colored swatches -->
+        </div>
+        <div class="ui-suggestions-grid">
+          <div class="ui-suggestion-card">
+            <strong>Layout Structure</strong>
+            <span id="result-ui-layout">Grid-based dashboard</span>
+          </div>
+          <div class="ui-suggestion-card">
+            <strong>Typography System</strong>
+            <span id="result-ui-fonts">Cinzel & Space Grotesk</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Milestones & Roadmap Timeline -->
+      <div class="glass-card dashboard-card">
+        <div class="dashboard-card-header">
+          <h3><i data-lucide="map"></i>Development Roadmap</h3>
+        </div>
+        <div class="roadmap-timeline" id="result-roadmap">
+          <!-- Timeline roadmap nodes -->
+        </div>
+      </div>
+
+      <!-- Card: Architectural Data Flow Description -->
+      <div class="glass-card dashboard-card">
+        <div class="dashboard-card-header">
+          <h3><i data-lucide="git-branch"></i>System Topology</h3>
+        </div>
+        <p class="architecture-text" id="result-architecture-desc" style="margin-bottom: 1.5rem;">
+          A description of server routes and caching clusters.
+        </p>
+        <div style="background: rgba(225, 218, 251, 0.02); border: 1px solid var(--card-border); border-radius: 16px; padding: 1.2rem;">
+          <strong style="color: var(--color-lavender); display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; margin-bottom: 0.5rem;">
+            <i data-lucide="shield-check" style="width: 16px; height: 16px;"></i> Deployment Strategy
+          </strong>
+          <span style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; display: block;">
+            Continuous Integration (CI/CD) pipelines push updates through automated tests. Frontend hosts execute statically on secure CDN edges, while microservice layers launch inside serverless containers backed by database clusters.
+          </span>
+        </div>
+      </div>
+
+      <!-- Card: 3D Node-Network Interactive Blueprint -->
+      <div class="glass-card blueprint-visual-section">
+        <div class="dashboard-card-header">
+          <h3><i data-lucide="codepen"></i>Interactive 3D Structure Graph</h3>
+          <span style="font-size: 0.85rem; color: var(--color-glaucous);">Drag to rotate • Hover node to inspect</span>
+        </div>
+        <div class="blueprint-visual-container" id="blueprint-visual-container">
+          <canvas id="blueprint-canvas"></canvas>
+          
+          <!-- Absolute-positioned details tooltip overlay -->
+          <div class="blueprint-overlay-details" id="blueprint-overlay">
+            <h4 class="node-title">API Gateway</h4>
+            <p class="node-desc">Throttles incoming requests.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Export Panel & Options -->
+      <div class="glass-card export-panel">
+        <h2 class="gradient-text">Export Blueprint Payload</h2>
+        <p>Save this blueprint configuration model to implement or share with developers.</p>
+        
+        <div class="export-actions">
+          <button class="btn btn-secondary" id="export-copy-btn">
+            <i data-lucide="copy"></i>
+            Copy Payload
+          </button>
+          <button class="btn btn-primary" id="export-download-btn">
+            <i data-lucide="download"></i>
+            Download Markdown
+          </button>
+        </div>
+        
+        <div style="margin-top: 3rem;">
+          <button class="btn btn-secondary" style="border-radius: 30px; padding: 0.6rem 2rem; font-size: 0.85rem;" id="forge-restart-btn">
+            <i data-lucide="refresh-cw"></i>
+            Forge Another Project
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Script Modules loaded sequentially -->
+  <script src="src/components/audio.js"></script>
+  <script src="src/components/particles.js"></script>
+  <script src="src/components/threeDObject.js"></script>
+  <script src="src/components/generator.js"></script>
+  <script src="src/components/blueprintVisualizer.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>
